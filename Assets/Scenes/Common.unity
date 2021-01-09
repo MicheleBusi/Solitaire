@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2f263e02b4f2745a8bfecce449a3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localizationMgr: {fileID: 11400000, guid: c05788bcc3d4cf24aad238f325d214f6, type: 2}
+  eventChannel: {fileID: 11400000, guid: 07b32a1e03b918642a4f145bdd1293d3, type: 2}
 --- !u!4 &19805695
 Transform:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 550728239}
   - component: {fileID: 550728238}
   m_Layer: 0
-  m_Name: Scene Loader
+  m_Name: Scene Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69bda4b69af67d4db31d1add0d37107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: af1084971d13dde479690830feb6ccb7, type: 2}
 --- !u!4 &550728239
 Transform:
   m_ObjectHideFlags: 0

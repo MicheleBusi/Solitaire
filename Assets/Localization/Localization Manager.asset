@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7102b20b10a6b3249a336a50b2005b41, type: 3}
   m_Name: Localization Manager
   m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: 07b32a1e03b918642a4f145bdd1293d3, type: 2}

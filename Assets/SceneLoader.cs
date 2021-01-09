@@ -4,11 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadSceneWithDelay(string sceneName, float delay)
+    [SerializeField] EC_SceneManagement eventChannel = default;
+
+    private void OnEnable()
     {
-        StartCoroutine(LoadSceneAsyncAndSetActive(sceneName, delay));
+        eventChannel.OnSceneLoadRequested += LoadScene;
+        eventChannel.OnSceneUnloadRequested += UnloadScene;
     }
 
+    private void OnDisable()
+    {
+        eventChannel.OnSceneLoadRequested -= LoadScene;
+        eventChannel.OnSceneUnloadRequested -= UnloadScene;
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        float delay = 0.5f;
+        StartCoroutine(LoadSceneAsyncAndSetActive(sceneName, delay));
+    }
 
     IEnumerator LoadSceneAsyncAndSetActive(string sceneName, float delay)
     {
@@ -19,6 +33,25 @@ public class SceneLoader : MonoBehaviour
             LoadSceneMode.Additive);
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+        eventChannel.OnSceneLoadCompleted.Invoke(sceneName);
+    }
+
+    public void UnloadScene(string sceneName)
+    {
+        float delay = 0.5f;
+        StartCoroutine(UnloadSceneWithDelay(sceneName, delay));
+    }
+
+    IEnumerator UnloadSceneWithDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+
+        SceneManager.UnloadSceneAsync(sceneName);
+    }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
     }
 }
 

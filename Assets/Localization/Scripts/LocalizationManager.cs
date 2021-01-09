@@ -6,9 +6,21 @@ using System.IO;
 [CreateAssetMenu(menuName = "Managers/Localization")]
 public class LocalizationManager : ScriptableObject
 {
+    [SerializeField] EC_Localization eventChannel = default; 
+
     private Dictionary<string, string> localizedText;
 
-    public void LoadLocalizedText(string fileName)
+    private void OnEnable()
+    {
+        eventChannel.OnLanguageChangeRequested += LoadLocalizedText;
+    }
+
+    private void OnDisable()
+    {
+        eventChannel.OnLanguageChangeRequested -= LoadLocalizedText;
+    }
+
+    void LoadLocalizedText(string fileName)
     {
         localizedText = new Dictionary<string, string>();
 
@@ -29,6 +41,7 @@ public class LocalizationManager : ScriptableObject
         }
 
         Debug.Log("Data loaded. Dictionary contains " + localizedText.Count + " entries.");
+        eventChannel.RaiseLanguageLoaded();
     }
 
     public string GetLocalizedValue(string key)

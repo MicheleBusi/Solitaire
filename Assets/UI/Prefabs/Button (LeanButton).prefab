@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: button_key
+  m_Text: 
 --- !u!114 &4983787114506744876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   localizationManager: {fileID: 11400000, guid: c05788bcc3d4cf24aad238f325d214f6, type: 2}
+  channelEvent: {fileID: 11400000, guid: 07b32a1e03b918642a4f145bdd1293d3, type: 2}
+  key: 
 --- !u!1 &5080481804632084462
 GameObject:
   m_ObjectHideFlags: 0

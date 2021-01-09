@@ -1,19 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
 public class LocalizedText : MonoBehaviour
 {
     [SerializeField] LocalizationManager localizationManager = default;
+    [SerializeField] EC_Localization channelEvent = default;
 
-    string key;
+    [SerializeField] string key = default;
 
-    void Start()
+    private void OnEnable()
     {
-        Text text = GetComponent<Text>();
-        key = text.text;
+        channelEvent.OnLanguageLoaded += LoadLocalizedValue;
+    }
+
+    private void OnDisable()
+    {
+        channelEvent.OnLanguageLoaded -= LoadLocalizedValue;
+    }
+
+    void LoadLocalizedValue()
+    {
         GetComponent<Text>().text = localizationManager.GetLocalizedValue(key);
     }
 }

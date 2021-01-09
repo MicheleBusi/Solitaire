@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e53e8045d34364680984c02e8ac4dd, type: 3}
-  m_Name: OnSceneUnload
+  m_Script: {fileID: 11500000, guid: 04e9dda72584d9e44af300de0960e04f, type: 3}
+  m_Name: EC_Scene Manager
   m_EditorClassIdentifier: 
-  sentInt: 0
-  sentFloat: 0
-  sentString: 
-  sentBool: 0

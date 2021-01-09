@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class InitializationManager : MonoBehaviour
 {
-    [SerializeField] LocalizationManager localizationMgr = default;
+    [SerializeField] EC_Localization eventChannel = default;
 
-    private void Awake()
+    private void Start()
     {
-        localizationMgr.LoadLocalizedText("english_ENG.json");
+        eventChannel.RaiseLanguageChangeRequested("english_ENG.json");
     }
 }
