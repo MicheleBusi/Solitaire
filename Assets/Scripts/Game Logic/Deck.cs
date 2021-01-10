@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cards/Deck")]
 public class Deck : ScriptableObject
 {
-    Stack<Card> deck = new Stack<Card>();
+    Stack<CardData> deck = new Stack<CardData>();
 
     public void GenerateNewDeck()
     {
@@ -15,7 +15,7 @@ public class Deck : ScriptableObject
             // For each number
             for (int j = 0; j < 13; j++)
             {
-                deck.Push(new Card((Suit)i, (CardValue)j));
+                deck.Push(new CardData((Suit)i, (CardValue)j));
             }
         }
     }
@@ -23,7 +23,7 @@ public class Deck : ScriptableObject
     public void Shuffle()
     {
         // Create a temporary list to shuffle
-        List<Card> tempDeck = new List<Card>();
+        List<CardData> tempDeck = new List<CardData>();
         for (int i = 0; i < deck.Count; i++)
         {
             tempDeck.Add(deck.Pop());
@@ -36,7 +36,7 @@ public class Deck : ScriptableObject
             int randomIndex_1 = Random.Range(0, deck.Count - 1);
             int randomIndex_2 = Random.Range(0, deck.Count - 1);
 
-            Card tempCard = tempDeck[randomIndex_1];
+            CardData tempCard = tempDeck[randomIndex_1];
             tempDeck[randomIndex_1] = tempDeck[randomIndex_2];
             tempDeck[randomIndex_2] = tempCard;
         }
@@ -48,7 +48,7 @@ public class Deck : ScriptableObject
         }
     }
 
-    public Card GetFirstCard()
+    public CardData GetFirstCard()
     {
         return deck.Pop();
     }

@@ -19,6 +19,11 @@ public class LocalizedText : MonoBehaviour
         channelEvent.OnLanguageLoaded -= LoadLocalizedValue;
     }
 
+    private void Start()
+    {
+        LoadLocalizedValue();
+    }
+
     void LoadLocalizedValue()
     {
         GetComponent<Text>().text = localizationManager.GetLocalizedValue(key);

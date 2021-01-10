@@ -27,9 +27,9 @@ public enum CardValue
     King
 }
 
-public class Card
+public class CardData
 {
-    public Card(Suit s, CardValue v)
+    public CardData(Suit s, CardValue v)
     {
         suit = s;
         value = v;
