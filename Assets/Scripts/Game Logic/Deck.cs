@@ -24,17 +24,17 @@ public class Deck : ScriptableObject
     {
         // Create a temporary list to shuffle
         List<CardData> tempDeck = new List<CardData>();
-        for (int i = 0; i < deck.Count; i++)
+        for (int i = deck.Count - 1; i >= 0; i--)
         {
             tempDeck.Add(deck.Pop());
         }
 
         // Shuffle the list
-        int randomSwapsCount = 200;
+        int randomSwapsCount = 400;
         for (int i = 0; i < randomSwapsCount; i++)
         {
-            int randomIndex_1 = Random.Range(0, deck.Count - 1);
-            int randomIndex_2 = Random.Range(0, deck.Count - 1);
+            int randomIndex_1 = Random.Range(0, tempDeck.Count - 1);
+            int randomIndex_2 = Random.Range(0, tempDeck.Count - 1);
 
             CardData tempCard = tempDeck[randomIndex_1];
             tempDeck[randomIndex_1] = tempDeck[randomIndex_2];
@@ -46,11 +46,22 @@ public class Deck : ScriptableObject
         {
             deck.Push(card);
         }
+
+        //Debug.Log("N Cards: " + deck.Count);
+        //foreach (var card in deck)
+        //{
+        //    Debug.Log(card.Suit);
+        //}
     }
 
-    public CardData GetFirstCard()
+    public CardData DrawCard()
     {
         return deck.Pop();
+    }
+
+    public void AddCard(CardData cd)
+    {
+        deck.Push(cd);
     }
 
 }
