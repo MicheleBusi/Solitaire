@@ -8,6 +8,6 @@ public class InitializationManager : MonoBehaviour
 
     private void Start()
     {
-        eventChannel.RaiseLanguageChangeRequested("italiano_ITA.json");
+        eventChannel.RaiseLanguageChangeRequested("english_ENG.json");
     }
 }

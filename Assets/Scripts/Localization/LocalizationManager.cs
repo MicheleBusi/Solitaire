@@ -8,7 +8,7 @@ public class LocalizationManager : ScriptableObject
 {
     [SerializeField] EC_Localization eventChannel = default; 
 
-    private Dictionary<string, string> localizedText;
+    private Dictionary<string, string> localizedText = default;
 
     private void OnEnable()
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class Deck : ScriptableObject
 {
     Stack<CardData> deck = new Stack<CardData>();
+    public int DeckCount => deck.Count;
 
     public void GenerateNewDeck()
     {
@@ -46,16 +47,15 @@ public class Deck : ScriptableObject
         {
             deck.Push(card);
         }
-
-        //Debug.Log("N Cards: " + deck.Count);
-        //foreach (var card in deck)
-        //{
-        //    Debug.Log(card.Suit);
-        //}
     }
 
     public CardData DrawCard()
     {
+        if (deck.Count == 0)
+        {
+            return null;
+        }
+
         return deck.Pop();
     }
 
@@ -63,5 +63,4 @@ public class Deck : ScriptableObject
     {
         deck.Push(cd);
     }
-
 }

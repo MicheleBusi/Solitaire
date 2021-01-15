@@ -11,6 +11,7 @@ public class CardFactory : ScriptableObject
     public Card SpawnCard(CardData cardData)
     {
         Card newCard = Instantiate(cardPrefab);
+        newCard.name = cardData.Number + " of " + cardData.Suit; 
         newCard.InitCardData(cardData);
         newCard.InitSprite(cardSprites.GetMatchingSprite(cardData));
         return newCard;

@@ -11,15 +11,18 @@ public class DeckManager : MonoBehaviour
 
     public Stack<CardData> discardedCards = new Stack<CardData>();
 
-    // Start is called before the first frame update
     void Start()
     {
         deck.GenerateNewDeck();
         deck.Shuffle();
+        InitialiseColumns();
+    }
 
+    private void InitialiseColumns()
+    {
         for (int i = 0; i < columns.Count; i++)
         {
-            for (int j = 0; j <= i; j++) // number of cards per column = i + 1
+            for (int j = 0; j <= i; j++) // Number of cards per column = i + 1
             {
                 CardData cd = deck.DrawCard();
 
@@ -28,9 +31,14 @@ public class DeckManager : MonoBehaviour
 
                 rt.SetParent(columns[i]);
 
+                c.GetComponent<CardDragger>().DragAvailable = true;
+
                 if (j == i)
                 {
                     c.TurnFaceUp();
+
+                    // Only the top card should be an active slot.
+                    c.GetComponent<CardDropSlot>().SlotActive = true; 
                 }
             }
         }
